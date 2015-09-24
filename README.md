@@ -1,4 +1,4 @@
 SPOJ
 ====
 
-Certain Solutions To Some Problems on the famous Sphere Online Judge.
+My solutions to some problems on the Sphere Online Judge: [spoj.com](http://spoj.com)
