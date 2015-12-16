@@ -24,12 +24,30 @@ string days[7]= {"Sun","Mon","Tue","Wed","Thur","Fri","Sat"};
 string months[12] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 int main()
 {
-    unsigned long long enc;
+    unsigned long long enc; // enc = encrypted
     unsigned long long p=4000000007;
     unsigned long long k=(((p-1)/2)-1)/2;
     scanf("%u",&enc);
-    unsigned long long dec;
+    unsigned long long dec; // dec = decrpted
     dec = powmod(enc,k+1,p);
     if(dec>p/2)
     dec = p-dec;
+
+    int days = dec/(60*60*24);
+    dec%=(60*60*24);
+    int hours = dec/(60*60);
+    dec%=(60*60);
+    int minutes = dec/60;
+    int seconds = dec%60;
+    int year=1970;
+    while(day>=364)
+    {
+     year++;
+     day-=364;
+     if((year % 4 == 0) && !(year % 100 == 0)||(year % 400 == 0))
+     day--;
+    }
+     while(day>=30)
+   {
+    
 }
