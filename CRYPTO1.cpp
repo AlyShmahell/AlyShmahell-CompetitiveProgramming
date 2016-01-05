@@ -1,5 +1,5 @@
 /*
-Copyright 2013-2015 ALY SHMAHELL
+Copyright 2015-2016 ALY SHMAHELL
 
  This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
@@ -21,7 +21,7 @@ Copyright 2013-2015 ALY SHMAHELL
 #include <cmath>
 #include <string>
 using namespace std;
-string days[7]= {"Sun","Mon","Tue","Wed","Thur","Fri","Sat"};
+string days[7]= {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
 string months[12] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 unsigned long long intmon[12] = {31,29,31,30,31,30,31,31,30,31,30,31};
 
@@ -40,40 +40,20 @@ unsigned long long powmod(unsigned long long base, unsigned long long exponent, 
 
 void convertdate(unsigned long long dec)
 {
-        unsigned long long sec,minute,hour,day,month,year;
+    time_t seconds(dec);
+    tm *timestruct = gmtime(&seconds);
 
-    day = dec / 60 / 60 / 24;
-    hour = (dec / 60 / 60) % 24;
-    minute = (dec / 60) % 60;
-    sec = dec % 60;
-    year = 1970;
-    while(day>=364)
-    {
-        day-=364;
-        year++;
-       if ((year % 4 == 0) && !(year % 100 == 0)|| (year % 400 == 0))
-        day--;
-    }
-    month=1;
-    while(day>=29)
-    {
-      day-=intmon[month];
-      month++;
-    }
-    cout<<year<<" "<<month<<" "<<day<<" "<<hour<<" "<<minute<<" "<<sec<<endl;
-
+    cout<<days[timestruct->tm_wday]<<" "<<months[timestruct->tm_mon]<<" "<<timestruct->tm_mday<<" "<<timestruct->tm_hour<<":"<<timestruct->tm_min<<":"<<timestruct->tm_sec<<" "<<timestruct->tm_year+1900<<endl;
 }
 int main()
 {
     unsigned long long enc; // enc = encrypted
     unsigned long long p=4000000007;
     unsigned long long k=((((p-1)/2)-1)/2);
-    cout<<"k: "<<k<<endl;
     scanf("%u",&enc);
-    unsigned long long dec; // dec = decrpted
+    unsigned long long dec; // dec = decrypted
     dec = powmod(enc,k+1,p);
     if(dec>(p/2))
         dec = p-dec;
-     cout<<"stamp dec: "<<dec<<endl;
     convertdate(dec);
 }
