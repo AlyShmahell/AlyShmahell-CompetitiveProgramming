@@ -1,5 +1,5 @@
 /*
-Copyright 2013-2015 ALY SHMAHELL
+Copyright 2013-2016 ALY SHMAHELL
 
  This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
@@ -14,82 +14,70 @@ Copyright 2013-2015 ALY SHMAHELL
     You should have received a copy of the GNU Lesser General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include<iostream>
+#include <iostream>
 using namespace std;
-
 int main()
 {
-    int k,a,b,v,balance,boxes=1,temp,sections=1;
+    int k,a,b,v;
     cin>>k>>a>>b>>v;
-    temp=0;
-    temp+=(a/sections);
-    if((a%sections)!=0)
-        temp++;
-    if(temp<v)
+    int temp;
+    int box=1;
+    int section=1;
+    if(a<=v)
     {
-        cout<<boxes;
+        cout<<box;
         return 0;
     }
     while(1)
     {
         if(k>(b+1)&&b>=0)
         {
-            sections+=(b);
+            section+=b;
             b=-1;
-            temp=0;
-            temp+=(a/sections);
-            if((a%sections)!=0)
-                temp++;
+            temp=a/section;
+            if(a%section) temp++;
             if(temp<=v)
             {
-                cout<<boxes;
+                cout<<box;
                 return 0;
             }
             else
             {
-            sections++;
-                boxes++;
+                section++;
+                box++;
             }
         }
         else if(k<=(b+1)&&b>=0)
         {
-            sections+=(k-1);
+            section+=(k-1);
             b-=(k-1);
-
-            temp=0;
-            temp+=(a/sections);
-            if((a%sections)!=0)
-                temp++;
+            temp=a/section;
+            if(a%section) temp++;
             if(temp<=v)
             {
-                cout<<boxes;
+                cout<<box;
                 return 0;
             }
             else
             {
-            sections++;
-                boxes++;
+                section++;
+                box++;
             }
         }
-        else if(b<=0)
+        else if(b<0)
         {
-
-            temp=0;
-            temp+=(a/sections);
-            if((a%sections)!=0)
-                temp++;
+            temp=a/section;
+            if(a%section) temp++;
             if(temp<=v)
             {
-                cout<<boxes;
+                cout<<box;
                 return 0;
             }
             else
             {
-            sections++;
-                boxes++;
+                section++;
+                box++;
             }
         }
-
     }
-
 }
