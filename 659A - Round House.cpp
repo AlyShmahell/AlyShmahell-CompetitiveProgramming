@@ -21,5 +21,5 @@ int main()
 {
     int n,a,b;
     cin>>n>>a>>b;
-    cout<<(abs(a+b)%n!=0?(abs(a+b)%n):n);
+    cout<<(abs((b%n)+a+n)%n>0?abs((b%n)+a+n)%n:n);
 }
