@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2017 Aly Shmahell
+Copyright (c) 2017 Aly Shmahell
 
  This software is provided 'as-is', without any express or implied warranty. 
  In no event will the authors be held liable for any damages arising from
@@ -16,7 +16,6 @@ Copyright (c) 2013-2017 Aly Shmahell
        misrepresented as being the original software.
     3. This notice may not be removed or altered from any source distribution.
 */
-
 #include <stdio.h>
 using namespace std;
 
